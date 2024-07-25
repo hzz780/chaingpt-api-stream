@@ -31,7 +31,11 @@ export class ChaingptService {
           observer.complete();
         });
       };
-      main();
+      main().catch((error) => {
+        console.log('error', error);
+        observer.next({ data: 'Please try again' });
+        observer.complete();
+      });
       // setTimeout(() => {
       //   observer.next({ data: 'hello' });
       //   setTimeout(() => {
